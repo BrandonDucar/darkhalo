@@ -44,6 +44,12 @@ Local development uses `http://127.0.0.1:5187`. Browser regression checks use
 assets configuration is included. Deployment requires a separately authenticated
 Cloudflare account: `npm run deploy`. Configuration is not deployment proof.
 
+Initial public app: https://darkhalo.dreamnet-intel.workers.dev
+Agent discovery: `/.well-known/darkhalo.json`. Static serving check: `/health`.
+These report the app's narrow scope, not DreamNet-wide health or execution proof.
+There is no remote inspection API; `/api/*` returns an explicit 404. Unknown
+asset paths also remain 404 instead of masquerading as working API routes.
+
 ## Input
 
 ```json

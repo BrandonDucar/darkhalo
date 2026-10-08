@@ -4,12 +4,12 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const base = process.env.DARKHALO_TEST_URL || 'http://127.0.0.1:5187';
-const output = resolve('test-results');
+const output = resolve(process.env.DARKHALO_TEST_OUTPUT || 'test-results');
 mkdirSync(output, { recursive: true });
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const results = [];
 try {
-  for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
+  for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }, { width: 320, height: 740 }]) {
     const context = await browser.newContext({ viewport, acceptDownloads: true });
     const page = await context.newPage();
     const errors = [];
