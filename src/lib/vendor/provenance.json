@@ -1,0 +1,28 @@
+{
+  "repository": "BrandonDucar/dream-net",
+  "head": "284449f3c4c53688c1c97de8d822aeddc7bfcbae",
+  "sourceFilesDirty": false,
+  "nodeVersion": "v26.7.0",
+  "sources": [
+    {
+      "path": "packages/farcaster-agent-memory-gate/src/RetrievalGatekeeper.mjs",
+      "sha256": "a3a17822c347783c4d3774dec2a05d682b28ccf6ef663ebce8b86fba0b0ff627"
+    },
+    {
+      "path": "packages/context-compressor/src/ContextCompressor.ts",
+      "sha256": "4357c376ad3fa9712e838802eb7d2dc3b2f231e530327d92dc8981d897e33208"
+    }
+  ],
+  "generated": [
+    {
+      "path": "RetrievalGatekeeper.mjs",
+      "sha256": "be02c9e09e2a01c652bee036c521b5d1a52df9e13c697dce668ffae64b2a1ce8",
+      "modifications": "Browser hash/performance imports only; algorithm unchanged."
+    },
+    {
+      "path": "ContextCompressor.mjs",
+      "sha256": "ad51411da86c1302a35f374ef608500633a8843d9049982da30bbb098dd051ab",
+      "modifications": "Node stripTypeScriptTypes mode strip and trailing-whitespace cleanup; no algorithm edits."
+    }
+  ]
+}

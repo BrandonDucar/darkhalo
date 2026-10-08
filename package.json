@@ -1,0 +1,29 @@
+{
+  "name": "darkhalo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "SEE LICENSE IN NOTICE.md",
+  "engines": { "node": ">=22.13.0" },
+  "description": "Local-first run inspection and evidence-bearing review capsules for agent teams.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5187 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5188 --strictPort",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node scripts/browser-check.mjs",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.4.0",
+    "@lucide/svelte": "1.52.0",
+    "svelte": "5.57.2"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "@playwright/test": "^1.55.0",
+    "vite": "8.3.3",
+    "wrangler": "4.87.0",
+    "typescript": "^5.9.0"
+  }
+}
