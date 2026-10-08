@@ -93,3 +93,19 @@ resolution; no license condition has been stripped by this build.
 This initial release is an inspection tool, not a production certificate for the
 estate it inspects. Source-linked discoveries can become existing DreamNet
 missions only through separately reviewed identity, authority and evidence paths.
+
+## Internal Source Sifter Adapter
+
+`src/lib/source-sifter-adapter.mjs` accepts the existing
+`dreamnet.source-sifter.v1` stable observation and emits private review capsules.
+It projects path/classification/fingerprint metadata, not raw source contents,
+credential files, verified wiring or source-file authorship. The observer label
+identifies Source Sifter, not the author of a candidate file.
+
+Up to 32 batches of 199 paths plus one summary per batch are inspected; omissions
+are explicit. `dedupeKey` binds the source snapshot so consumers can avoid repeated
+work. This is deterministic analysis, with no model or paid API call. It does not
+create a daemon, queue, external delivery receipt or permission to stage/delete.
+The existing DreamNet source-review command can bind this installed module through
+`DREAMNET_DARKHALO_MODULE` and retain results in its existing private report.
+The public website remains local-only and never polls an internal filesystem.
