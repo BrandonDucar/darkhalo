@@ -6,8 +6,44 @@ import { resolve } from 'node:path';
 const base = process.env.DARKHALO_TEST_URL || 'http://127.0.0.1:5187';
 const output = resolve(process.env.DARKHALO_TEST_OUTPUT || 'test-results');
 mkdirSync(output, { recursive: true });
-const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const browser = await chromium.launch({ headless: true });
 const results = [];
+async function keyboardFocus(page, target, label) {
+  for (let step = 0; step < 80; step++) {
+    await page.keyboard.press('Tab');
+    if (await target.evaluate(element => element === document.activeElement)) {
+      assert.equal(await target.evaluate(element => element.matches(':focus-visible') && getComputedStyle(element).outlineStyle !== 'none' && getComputedStyle(element).outlineWidth !== '0px'), true, `${label} has visible keyboard focus`);
+      return;
+    }
+  }
+  assert.fail(`${label} is not reachable by keyboard`);
+}
+
+async function keyboardOnlyWorkflow(page) {
+  const sample = page.getByRole('button', { name: 'Load synthetic sample', exact: true });
+  await keyboardFocus(page, sample, 'Synthetic sample');
+  await page.keyboard.press('Enter');
+
+  const inspect = page.getByRole('button', { name: 'Import + inspect', exact: false });
+  await keyboardFocus(page, inspect, 'Import + inspect');
+  await page.keyboard.press('Enter');
+  await page.getByRole('heading', { name: 'Inspection findings', exact: true }).waitFor();
+  await page.getByText('SYNTHETIC', { exact: true }).first().waitFor();
+
+  const capsuleTab = page.getByRole('navigation', { name: 'Workspace navigation' }).getByRole('button', { name: 'Capsule', exact: true });
+  await keyboardFocus(page, capsuleTab, 'Capsule navigation');
+  await page.keyboard.press('Enter');
+  await page.getByRole('heading', { name: 'Export capsule', exact: true }).waitFor();
+  const capsule = JSON.parse(await page.getByRole('textbox', { name: 'Export capsule JSON preview' }).inputValue());
+  assert.equal(capsule.records.length, 4, 'Keyboard path reaches the synthetic capsule');
+
+  const downloadEvent = page.waitForEvent('download');
+  const downloadButton = page.getByRole('button', { name: 'Download JSON', exact: true });
+  await keyboardFocus(page, downloadButton, 'Capsule download');
+  await page.keyboard.press('Enter');
+  assert.match((await downloadEvent).suggestedFilename(), /\.json$/);
+}
+
 try {
   for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }, { width: 320, height: 740 }]) {
     const context = await browser.newContext({ viewport, acceptDownloads: true });
@@ -23,6 +59,9 @@ try {
     await page.getByRole('heading', { name: 'Evidence intake', exact: true }).waitFor();
     assert.equal(await page.locator('.metrics-strip').count(), 0, 'Cold start must not fabricate live metrics');
     await page.screenshot({ path: resolve(output, `intake-${viewport.width}.png`), fullPage: true });
+    await keyboardOnlyWorkflow(page);
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.getByRole('heading', { name: 'Evidence intake', exact: true }).waitFor();
     await page.getByRole('button', { name: 'Load synthetic sample', exact: true }).click();
     await page.getByRole('button', { name: 'Import + inspect', exact: false }).click();
     await page.getByRole('heading', { name: 'Inspection findings', exact: true }).waitFor();
@@ -69,6 +108,7 @@ try {
     assert.deepEqual(external, [], 'No outside requests while inspecting/exporting');
     results.push({ viewport, status: 'PASS', coldStartNoMetrics: true, records: 4,
       filters: true, localRevocation: true, capsuleDownload: true, malformedInput: true,
+      keyboardOnlyIntakeFindingsCapsule: true,
       horizontalOverflow: overflow, runtimeErrors: errors, externalRequests: external });
     await context.close();
   }

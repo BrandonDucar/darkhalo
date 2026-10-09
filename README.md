@@ -46,8 +46,10 @@ node scripts/inspect-file.mjs INPUT.json --output PRIVATE_REVIEW_CAPSULE.json
 The CLI never overwrites its input or an existing output. It writes only the
 explicit requested capsule and reports counts/digests, not raw source text.
 
-Local development uses `http://127.0.0.1:5187`. Browser regression checks use
-`npm run test:browser` while that server is running. Cloudflare Workers static
+Local development uses `http://127.0.0.1:5187`. Install Playwright Chromium once
+with `npx playwright install chromium`, then run `npm run test:browser` while the
+server is running. This includes a keyboard-only synthetic intake-to-capsule
+export at desktop and mobile widths. Cloudflare Workers static
 assets configuration is included. Deployment requires a separately authenticated
 Cloudflare account: `npm run deploy`. Configuration is not deployment proof.
 
