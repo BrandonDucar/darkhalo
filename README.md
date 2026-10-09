@@ -91,11 +91,12 @@ remain the places for permission, qualification, durable state and action proof.
 The larger DreamNet audit is internal. Its private inventories, conversation dumps,
 email exchanges and credentials are deliberately not distributed in this repo.
 
-Original Darkhalo code uses Apache-2.0; see LICENSE. The vendored retrieval gate
-also carries an upstream Commons Clause commercial restriction, preserved in
-NOTICE.md. Do not assume the entire combined distribution is unrestricted
-Apache-only software. Commercial relicensing requires the owner's explicit
-resolution; no license condition has been stripped by this build.
+Original Darkhalo code and the bundled DreamNet retrieval-gate and compressor
+implementations use Apache-2.0; see LICENSE and NOTICE.md. The owner-authored
+package-local commercial condition has been resolved for this public bundled
+distribution. Pinned vendor bytes and attribution are preserved. Third-party
+dependencies retain their own terms; this grant does not change the private
+upstream package or confer production, data or identity authority.
 
 This initial release is an inspection tool, not a production certificate for the
 estate it inspects. Source-linked discoveries can become existing DreamNet
