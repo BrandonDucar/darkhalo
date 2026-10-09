@@ -3,6 +3,13 @@
 A source-available, local-first workspace for inspecting agent runs and recovering
 useful cross-team context without promoting untrusted material into authority.
 
+[Open Darkhalo](https://darkhalo.dreamnet-intel.workers.dev) | [Contribute](CONTRIBUTING.md) | [License and attribution](NOTICE.md)
+
+![Darkhalo evidence intake screen](docs/images/public-app.png)
+
+Actual public interface captured October 9, 2026. The built-in sample is
+explicitly synthetic; this image is not evidence of a completed real-world audit.
+
 ## The Workflow
 
 1. Import a bounded JSON run. Inspect exact record authors, IDs and source links.
