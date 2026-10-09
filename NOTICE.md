@@ -1,7 +1,10 @@
 # Darkhalo Local Analysis Core
 
 Copyright 2026 Brandon Ducar / DreamNet Systems.
-The existing root Apache-2.0 LICENSE has not been changed.
+Copyright 2026 Brandon Ducar & DreamNet Ecosystem
+
+The root LICENSE contains the complete, unmodified Apache-2.0 license text.
+The project copyright attribution formerly printed there is retained above.
 
 ## Upstream Source Provenance
 
