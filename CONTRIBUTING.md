@@ -20,7 +20,11 @@ results. A successful test is not a provider receipt or production certification
 5. Do not include customer data, location histories, private conversations,
    tokens, or filesystem paths that reveal another person's environment.
 
-Darkhalo is source-available. Read LICENSE and NOTICE.md: the vendored retrieval gate retains an upstream Commons Clause restriction. Do not remove it or describe the combined distribution as unrestricted Apache-only software.
+Original Darkhalo code and the bundled DreamNet implementations use Apache-2.0;
+read LICENSE and NOTICE.md for the public distribution grant and pinned origins.
+Preserve copyright attribution, vendor byte hashes and provenance. Third-party
+dependencies retain their own terms. The public grant does not change the private
+DreamNet package or confer production, data, signer or identity authority.
 
 Report bugs through this repository's Issues tab. For a suspected secret leak,
 do not paste the secret into an issue; describe the affected surface without

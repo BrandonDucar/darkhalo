@@ -1,7 +1,10 @@
 # Darkhalo Local Analysis Core
 
 Copyright 2026 Brandon Ducar / DreamNet Systems.
-The existing root Apache-2.0 LICENSE has not been changed.
+Copyright 2026 Brandon Ducar & DreamNet Ecosystem
+
+The root LICENSE contains the complete, unmodified Apache-2.0 license text.
+The project copyright attribution formerly printed there is retained above.
 
 ## Upstream Source Provenance
 
@@ -34,38 +37,28 @@ must preserve vendored bytes in its integration/config ownership (for example,
 mark vendor files as binary/-text in .gitattributes) before a future checkout.
 This worker did not change Git configuration or attributes.
 
-## Retained Package Notice
+## License for the Public Bundled Distribution
 
-The upstream root declares Apache-2.0. The gate package's package.json declares
-Apache-2.0, but its package-local LICENSE also includes the following additional
-notice, retained here without interpreting or removing it. This discrepancy
-requires owner review before commercial distribution; this file does not
-relicense upstream code or modify the root LICENSE.
+Copyright 2026 Brandon Ducar / DreamNet Systems.
 
-Copyright 2026 Brandon Ducar / DreamNet Systems
+Original Darkhalo code and the two bundled DreamNet implementation files
+identified above are licensed under the Apache License, Version 2.0. The full
+terms are in the root LICENSE. The copyright holder's Apache-2.0 licensing
+choice is reflected consistently in this notice and the package metadata.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+The pinned retrieval-gate package formerly included a package-local commercial
+condition authored by Brandon Ducar / DreamNet Systems. That condition is not
+imposed on this public Darkhalo bundled distribution. Historical source and
+generated hashes remain unchanged in src/lib/vendor/provenance.json; they bind
+the code bytes, while this notice records the licensing grant for this bundle.
+The original package notice was introduced in BrandonDucar/dream-net commit
+`64df1b8fd80d62ec4cb6df5ad55e9b59ca83e3ec` and is preserved in that repository's
+history. This public reconciliation does not edit the private upstream package.
 
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-COMMONS CLAUSE ADDITIONAL PERMISSION & CONDITION
-
-The "Commons Clause" Condition applies to the Software:
-
-1. Free Use: You may copy, modify, distribute, and execute this Software free of
-   charge for research, open-source development, and building autonomous agents
-   on the Farcaster protocol.
-2. Commercial Restriction: You may not sell the Software, or provide the Software
-   as a commercial SaaS/PaaS multi-tenant memory gateway service to third parties,
-   without an explicit commercial license agreement from DreamNet.
+Third-party dependencies remain under their own licenses. Their package-lock
+metadata and copyright notices are retained. This Apache-2.0 grant does not
+replace third-party terms, change the pinned vendor algorithms, or grant
+runtime, data, signer, identity, trademark or deployment authority.
 
 ## Browser Adapter Boundaries
 
